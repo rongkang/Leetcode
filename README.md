@@ -1,2 +1,3 @@
-# Leetcode
-leetcode answers
+# Leetcode Java
+leetcode answers in Java Language
+
