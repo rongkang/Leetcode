@@ -1,0 +1,42 @@
+public class Solution {
+  private void permuteS(int[] nums,int k,List<List<Integer>> lists) {
+		if(k==nums.length-1){
+			ArrayList<Integer> list= new ArrayList<Integer>();
+			for(int i=0; i<nums.length;i++){
+				list.add(nums[i]);
+			}
+			//System.out.println(Arrays.toString(nums));
+			lists.add(list);
+		}else {
+			for(int i=k;i<nums.length;++i ){
+				int tmp=nums[i];
+	    		nums[i]=nums[k];
+	    		nums[k]=tmp;
+	    		permuteS(nums, k+1,  lists);
+	    		tmp=nums[i];
+	    		nums[i]=nums[k];
+	    		nums[k]=tmp;
+			}
+		}
+	}
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> lists =new ArrayList<List<Integer>>();
+    	if(nums.length==0)return lists;
+    	if(nums.length==1){
+    		ArrayList<Integer> list= new ArrayList<Integer>();
+    		list.add(nums[0]);
+    		lists.add(list);
+    		return lists;
+    	}
+    	for(int i=0; i<nums.length;i++){
+    		int tmp=nums[i];
+    		nums[i]=nums[0];
+    		nums[0]=tmp;
+    		permuteS(nums, 1,  lists);
+    		tmp=nums[i];
+    		nums[i]=nums[0];
+    		nums[0]=tmp;
+    	}
+        return lists;
+    }
+}
